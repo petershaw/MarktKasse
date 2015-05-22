@@ -20,7 +20,11 @@ class AccountItem {
     }
 }
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ProductActionDelegate {
+class ViewController: UIViewController,
+    UITableViewDataSource,
+    UITableViewDelegate,
+    ProductActionDelegate,
+    UpdateProductDelegate {
 
     @IBOutlet weak var numberpanel: UITextField!
     @IBOutlet weak var productTable: UITableView!
@@ -32,6 +36,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var entries = [NSManagedObject]()
     var categories = [NSManagedObject]()
     var account = [AccountItem]()
+    var currentSelectedEntry: NSManagedObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,6 +130,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             let item = products[indexPath.row]
             cell.id = item.objectID
+            cell.managedObject = item
             cell.productname.text = item.valueForKey("name") as? String
             cell.price = (item.valueForKey("price") as? Double)!
             cell.delegate = self
@@ -140,7 +146,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         var indexPath = productTable.indexPathForRowAtPoint(locationInView)
         if state.rawValue == 1 {
             // editProductSegue
-            performSegueWithIdentifier("editProductSegue", sender: self)
+            if let cell = productTable.cellForRowAtIndexPath(indexPath!) as? ProductCell {
+                NSLog("Set managed object")
+                currentSelectedEntry = cell.managedObject!
+            }
+             performSegueWithIdentifier("editProductSegue", sender: self)
         }
         
     }
@@ -172,11 +182,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         NSLog("PREPARE FOR SEGUE")
         if segue.identifier == "editProductSegue" {
             if let controler: EditProductController = segue.destinationViewController as? EditProductController {
-                
-                controler.isEditMode = true
-                
+                controler.delegate = self
+                controler.itemToEdit = currentSelectedEntry
             }
-            
         }
     }
     
@@ -210,6 +218,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
         }
         updateCalculation()
+    }
+    
+    func productsDidUpdated() {
+        productTable.reloadData()
     }
     
     func fnCalculatePrices(item: AccountItem) -> Double {

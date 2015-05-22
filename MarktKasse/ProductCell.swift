@@ -22,6 +22,7 @@ class ProductCell: UITableViewCell {
     var delegate: ProductActionDelegate?
     
     var id: NSManagedObjectID = NSManagedObjectID()
+    var managedObject: NSManagedObject?
     
     @IBOutlet weak var productname: UILabel!
     
