@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Account" representedClassName="Account" syncable="YES">
+    <entity name="Account" representedClassName="MarktKasse.Account" syncable="YES">
         <attribute name="timestamp" attributeType="Date" syncable="YES"/>
     </entity>
-    <entity name="Account_Log" representedClassName="Account_Log" syncable="YES">
+    <entity name="Account_Log" representedClassName="MarktKasse.Account_Log" syncable="YES">
+        <attribute name="count" attributeType="Integer 16" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" syncable="YES"/>
         <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" syncable="YES"/>
     </entity>
-    <entity name="Category" representedClassName="Category" syncable="YES">
+    <entity name="Category" representedClassName="MarktKasse.Category" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Product" representedClassName="Product" syncable="YES">
+    <entity name="Product" representedClassName="MarktKasse.Product" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" syncable="YES"/>
     </entity>
+    <entity name="Revenues" representedClassName="MarktKasse.Revenues" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Account" positionX="-126" positionY="-231" width="128" height="58"/>
-        <element name="Account_Log" positionX="72" positionY="-252" width="128" height="88"/>
-        <element name="Category" positionX="-144" positionY="39" width="128" height="58"/>
-        <element name="Product" positionX="268" positionY="-171" width="128" height="88"/>
+        <element name="Account" positionX="-126" positionY="-231" width="128" height="60"/>
+        <element name="Account_Log" positionX="72" positionY="-252" width="128" height="105"/>
+        <element name="Category" positionX="-144" positionY="39" width="128" height="60"/>
+        <element name="Product" positionX="268" positionY="-171" width="128" height="90"/>
+        <element name="Revenues" positionX="54" positionY="-108" width="128" height="75"/>
     </elements>
 </model>

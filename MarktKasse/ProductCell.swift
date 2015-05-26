@@ -41,9 +41,13 @@ class ProductCell: UITableViewCell {
             delegate?.updateProductPrice(id: self.id, add: false)
         }
         lastcount = Int(sender.value)
-        productcount.text = "\(lastcount) x"
     }
     
-    
+    func reset(count: Int?){
+        let c = Double(count ?? 0)
+        lastcount = count ?? 0
+        productstepper.value = c
+        productcount.text = "\(Int(c)) x"
+    }
     
 }

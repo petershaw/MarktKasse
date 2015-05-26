@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010561561B151FD6007CB351 /* CurrentRevenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010561551B151FD6007CB351 /* CurrentRevenueViewController.swift */; };
+		0105615B1B152DAF007CB351 /* ProductCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0105615A1B152DAF007CB351 /* ProductCalculation.swift */; };
+		0105615D1B153C87007CB351 /* Revenues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0105615C1B153C87007CB351 /* Revenues.swift */; };
 		011E70B61AFE61DB007CB351 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011E70B51AFE61DB007CB351 /* ProductCell.swift */; };
+		01431C3E1B139A6F007CB351 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01431C3D1B139A6F007CB351 /* Product.swift */; };
+		01431C421B139A70007CB351 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01431C411B139A70007CB351 /* Account.swift */; };
+		01431C441B139A70007CB351 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01431C431B139A70007CB351 /* Category.swift */; };
+		01431C461B139B7F007CB351 /* Account_Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01431C451B139B7F007CB351 /* Account_Log.swift */; };
 		01483DCA1AFFF086007CB351 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01483DC91AFFF086007CB351 /* SWRevealViewController.m */; };
 		01483DCC1AFFF19B007CB351 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01483DCB1AFFF19B007CB351 /* MenuViewController.swift */; };
 		015FDE021B0001D9007CB351 /* EditProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015FDE011B0001D9007CB351 /* EditProductViewController.swift */; };
-		01B7FDE81B0A484C007CB351 /* Account_Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B7FDE71B0A484C007CB351 /* Account_Log.swift */; };
-		01B7FDEA1B0A484C007CB351 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B7FDE91B0A484C007CB351 /* Category.swift */; };
-		01B7FDEC1B0A484C007CB351 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B7FDEB1B0A484C007CB351 /* Product.swift */; };
-		01B7FDEE1B0A484D007CB351 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B7FDED1B0A484D007CB351 /* Account.swift */; };
 		01E8C9621AFBFECA007CB351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E8C9611AFBFECA007CB351 /* AppDelegate.swift */; };
 		01E8C9651AFBFECA007CB351 /* MarktKasse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01E8C9631AFBFECA007CB351 /* MarktKasse.xcdatamodeld */; };
 		01E8C9671AFBFECA007CB351 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E8C9661AFBFECA007CB351 /* ViewController.swift */; };
@@ -35,16 +38,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		010561551B151FD6007CB351 /* CurrentRevenueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentRevenueViewController.swift; sourceTree = "<group>"; };
+		0105615A1B152DAF007CB351 /* ProductCalculation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCalculation.swift; sourceTree = "<group>"; };
+		0105615C1B153C87007CB351 /* Revenues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Revenues.swift; path = MarktKasse/Revenues.swift; sourceTree = "<group>"; };
 		011E70B51AFE61DB007CB351 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		01431C3D1B139A6F007CB351 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Product.swift; path = MarktKasse/Product.swift; sourceTree = "<group>"; };
+		01431C411B139A70007CB351 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = MarktKasse/Account.swift; sourceTree = "<group>"; };
+		01431C431B139A70007CB351 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = MarktKasse/Category.swift; sourceTree = "<group>"; };
+		01431C451B139B7F007CB351 /* Account_Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account_Log.swift; path = MarktKasse/Account_Log.swift; sourceTree = "<group>"; };
 		01483DC71AFFF086007CB351 /* MarktKasse-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MarktKasse-Bridging-Header.h"; sourceTree = "<group>"; };
 		01483DC81AFFF086007CB351 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		01483DC91AFFF086007CB351 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		01483DCB1AFFF19B007CB351 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		015FDE011B0001D9007CB351 /* EditProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProductViewController.swift; sourceTree = "<group>"; };
-		01B7FDE71B0A484C007CB351 /* Account_Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account_Log.swift; path = MarktKasse/Account_Log.swift; sourceTree = "<group>"; };
-		01B7FDE91B0A484C007CB351 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = MarktKasse/Category.swift; sourceTree = "<group>"; };
-		01B7FDEB1B0A484C007CB351 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Product.swift; path = MarktKasse/Product.swift; sourceTree = "<group>"; };
-		01B7FDED1B0A484D007CB351 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = MarktKasse/Account.swift; sourceTree = "<group>"; };
 		01E8C95C1AFBFECA007CB351 /* MarktKasse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarktKasse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01E8C9601AFBFECA007CB351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01E8C9611AFBFECA007CB351 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +82,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		010561591B152149007CB351 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0105615C1B153C87007CB351 /* Revenues.swift */,
+				01431C451B139B7F007CB351 /* Account_Log.swift */,
+				01431C431B139A70007CB351 /* Category.swift */,
+				01431C411B139A70007CB351 /* Account.swift */,
+				01431C3D1B139A6F007CB351 /* Product.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		01483DC61AFFF056007CB351 /* SWRevealViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,10 +114,7 @@
 		01E8C9531AFBFEC9007CB351 = {
 			isa = PBXGroup;
 			children = (
-				01B7FDED1B0A484D007CB351 /* Account.swift */,
-				01B7FDEB1B0A484C007CB351 /* Product.swift */,
-				01B7FDE91B0A484C007CB351 /* Category.swift */,
-				01B7FDE71B0A484C007CB351 /* Account_Log.swift */,
+				010561591B152149007CB351 /* Models */,
 				01E8C95E1AFBFECA007CB351 /* MarktKasse */,
 				01E8C9771AFBFECA007CB351 /* MarktKasseTests */,
 				01E8C95D1AFBFECA007CB351 /* Products */,
@@ -130,6 +145,8 @@
 				011E70B51AFE61DB007CB351 /* ProductCell.swift */,
 				01483DCB1AFFF19B007CB351 /* MenuViewController.swift */,
 				015FDE011B0001D9007CB351 /* EditProductViewController.swift */,
+				010561551B151FD6007CB351 /* CurrentRevenueViewController.swift */,
+				0105615A1B152DAF007CB351 /* ProductCalculation.swift */,
 			);
 			path = MarktKasse;
 			sourceTree = "<group>";
@@ -260,16 +277,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				015FDE021B0001D9007CB351 /* EditProductViewController.swift in Sources */,
-				01B7FDEE1B0A484D007CB351 /* Account.swift in Sources */,
+				010561561B151FD6007CB351 /* CurrentRevenueViewController.swift in Sources */,
+				0105615D1B153C87007CB351 /* Revenues.swift in Sources */,
+				01431C421B139A70007CB351 /* Account.swift in Sources */,
 				01E8C9671AFBFECA007CB351 /* ViewController.swift in Sources */,
-				01B7FDE81B0A484C007CB351 /* Account_Log.swift in Sources */,
 				01483DCC1AFFF19B007CB351 /* MenuViewController.swift in Sources */,
+				01431C3E1B139A6F007CB351 /* Product.swift in Sources */,
 				011E70B61AFE61DB007CB351 /* ProductCell.swift in Sources */,
-				01B7FDEA1B0A484C007CB351 /* Category.swift in Sources */,
+				0105615B1B152DAF007CB351 /* ProductCalculation.swift in Sources */,
+				01431C461B139B7F007CB351 /* Account_Log.swift in Sources */,
 				01483DCA1AFFF086007CB351 /* SWRevealViewController.m in Sources */,
-				01B7FDEC1B0A484C007CB351 /* Product.swift in Sources */,
 				01E8C9621AFBFECA007CB351 /* AppDelegate.swift in Sources */,
 				01E8C9651AFBFECA007CB351 /* MarktKasse.xcdatamodeld in Sources */,
+				01431C441B139A70007CB351 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

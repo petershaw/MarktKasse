@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6mo-2C-Pbq">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -81,7 +82,11 @@
                                 <items>
                                     <barButtonItem title="Menu" id="WKb-qm-wKL"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="gXV-xQ-T4S"/>
-                                    <barButtonItem title="Checkout" id="d3i-2u-40h"/>
+                                    <barButtonItem title="Checkout" id="d3i-2u-40h">
+                                        <connections>
+                                            <action selector="checkoutAction:" destination="vXZ-lx-hvc" id="Avw-Zs-ycW"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -153,7 +158,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7p-eD-ksG">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7p-eD-ksG">
                                 <rect key="frame" x="16" y="66" width="102" height="30"/>
                                 <state key="normal" title="Neues Produkt">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -162,7 +167,7 @@
                                     <segue destination="XmA-GF-paF" kind="custom" identifier="" customClass="SWRevealViewControllerSeguePushController" id="zJy-fj-tcG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOU-1L-SgY">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOU-1L-SgY">
                                 <rect key="frame" x="16" y="104" width="42" height="30"/>
                                 <state key="normal" title="Kasse">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -171,11 +176,24 @@
                                     <segue destination="vXZ-lx-hvc" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="onG-3V-jgi"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPL-sY-kUo">
+                                <rect key="frame" x="16" y="181" width="79" height="30"/>
+                                <state key="normal" title="Abschlüsse">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Bcm-aH-EQT" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="F3T-9Y-ikx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="XOU-1L-SgY" firstAttribute="top" secondItem="mJy-CB-PEM" secondAttribute="top" constant="104" id="4e3-ru-luL"/>
                             <constraint firstItem="XOU-1L-SgY" firstAttribute="top" secondItem="q7p-eD-ksG" secondAttribute="bottom" constant="8" symbolic="YES" id="KNs-Re-ecR"/>
+                            <constraint firstItem="XOU-1L-SgY" firstAttribute="leading" secondItem="GPL-sY-kUo" secondAttribute="leading" id="cDR-91-Zuu"/>
                             <constraint firstItem="q7p-eD-ksG" firstAttribute="leading" secondItem="mJy-CB-PEM" secondAttribute="leading" constant="16" id="kQG-vp-agd"/>
+                            <constraint firstItem="XOU-1L-SgY" firstAttribute="leading" secondItem="q7p-eD-ksG" secondAttribute="leading" id="rRd-Ep-RGZ"/>
+                            <constraint firstItem="GPL-sY-kUo" firstAttribute="top" secondItem="XOU-1L-SgY" secondAttribute="bottom" constant="47" id="zJl-Ju-iUe"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -332,12 +350,161 @@
             </objects>
             <point key="canvasLocation" x="2307" y="1726"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="nNh-TB-whK">
+            <objects>
+                <viewController id="Bcm-aH-EQT" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="utw-t9-2Zm"/>
+                        <viewControllerLayoutGuide type="bottom" id="59e-b1-ml2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ySi-Z3-5gs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2m-j6-beT">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Zurück" id="XaE-QV-fH6">
+                                        <connections>
+                                            <action selector="revealToggle:" destination="2AR-ug-BHp" id="7mE-ui-Hfs"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Erj-FK-kaC"/>
+                                    <barButtonItem id="Xzy-cQ-8iN">
+                                        <connections>
+                                            <action selector="saveAction:" destination="XmA-GF-paF" id="j2b-4f-HKt"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4xn-Sm-hF6">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <connections>
+                                    <segue destination="pGS-z3-RxW" kind="embed" id="e0b-91-JKf"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4xn-Sm-hF6" secondAttribute="trailing" id="RFn-Ds-Eqo"/>
+                            <constraint firstItem="4xn-Sm-hF6" firstAttribute="leading" secondItem="ySi-Z3-5gs" secondAttribute="leading" id="VQz-4u-b34"/>
+                            <constraint firstItem="a2m-j6-beT" firstAttribute="top" secondItem="ySi-Z3-5gs" secondAttribute="top" constant="20" id="cLW-sF-aAC"/>
+                            <constraint firstAttribute="trailing" secondItem="a2m-j6-beT" secondAttribute="trailing" id="oKY-pc-HOo"/>
+                            <constraint firstItem="a2m-j6-beT" firstAttribute="leading" secondItem="ySi-Z3-5gs" secondAttribute="leading" id="pP5-lu-uz5"/>
+                            <constraint firstItem="4xn-Sm-hF6" firstAttribute="top" secondItem="a2m-j6-beT" secondAttribute="bottom" id="rlO-Zy-Etx"/>
+                            <constraint firstAttribute="bottom" secondItem="4xn-Sm-hF6" secondAttribute="bottom" id="sld-lm-aCU"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2AR-ug-BHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1849" y="2506"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Brq-xc-MBE">
+            <objects>
+                <viewController id="3Hp-1H-df9" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="m9n-cT-RWd"/>
+                        <viewControllerLayoutGuide type="bottom" id="ea9-kL-gbx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Uyi-Lv-Quj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="history" id="vv2-Jc-tjM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vas-YZ-hzi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2683" y="3550"/>
+        </scene>
+        <!--Aktueller Tag-->
+        <scene sceneID="qeV-LU-jeN">
+            <objects>
+                <viewController title="Aktueller Tag" id="KRh-Jd-cKe" customClass="CurrentRevenueViewController" customModule="MarktKasse" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sqt-og-I7Z"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qxg-cE-5EU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Vgq-VK-IYW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aktueller Umsatz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SB-GW-J87">
+                                <rect key="frame" x="235" y="20" width="130" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDt-7N-ZZM">
+                                <rect key="frame" x="202" y="253" width="196" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="196" id="OjM-HG-ahf"/>
+                                </constraints>
+                                <state key="normal" title="Tagesabschluß durchführen">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="endOfDayAction:" destination="KRh-Jd-cKe" eventType="touchUpInside" id="oYx-97-jq5"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1118.20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sx7-DI-BvJ">
+                                <rect key="frame" x="16" y="49" width="568" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="jNf-nE-eey"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="43"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sx7-DI-BvJ" firstAttribute="top" secondItem="9SB-GW-J87" secondAttribute="bottom" constant="8" symbolic="YES" id="084-AM-WiA"/>
+                            <constraint firstItem="9SB-GW-J87" firstAttribute="top" secondItem="Vgq-VK-IYW" secondAttribute="top" constant="20" symbolic="YES" id="D98-7s-PBP"/>
+                            <constraint firstItem="zDt-7N-ZZM" firstAttribute="centerX" secondItem="9SB-GW-J87" secondAttribute="centerX" id="EDS-Rs-Ic8"/>
+                            <constraint firstItem="zDt-7N-ZZM" firstAttribute="centerX" secondItem="Vgq-VK-IYW" secondAttribute="centerX" id="dUN-Ru-Fd5"/>
+                            <constraint firstItem="sx7-DI-BvJ" firstAttribute="leading" secondItem="Vgq-VK-IYW" secondAttribute="leadingMargin" id="lVz-GC-vPv"/>
+                            <constraint firstItem="zDt-7N-ZZM" firstAttribute="centerY" secondItem="Vgq-VK-IYW" secondAttribute="centerY" id="wMo-DU-zoE"/>
+                            <constraint firstItem="9SB-GW-J87" firstAttribute="centerX" secondItem="sx7-DI-BvJ" secondAttribute="centerX" id="yfq-hr-DoX"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Aktueller Umsatz" id="6vw-hC-6bj"/>
+                    <connections>
+                        <outlet property="amount" destination="sx7-DI-BvJ" id="TYd-TJ-5cU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q1I-hw-9Nn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2682" y="2890"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="j6e-qE-G5H">
+            <objects>
+                <tabBarController id="pGS-z3-RxW" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="KV2-em-yfA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="KRh-Jd-cKe" kind="relationship" relationship="viewControllers" id="Xff-zI-0Ts"/>
+                        <segue destination="3Hp-1H-df9" kind="relationship" relationship="viewControllers" id="0Xe-MQ-9JI"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DmA-aG-ix4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1858" y="3222"/>
+        </scene>
     </scenes>
     <resources>
         <image name="delete" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="79T-Fr-E1y"/>
+        <segue reference="zJy-fj-tcG"/>
         <segue reference="onG-3V-jgi"/>
     </inferredMetricsTieBreakers>
 </document>

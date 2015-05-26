@@ -24,22 +24,30 @@ class ViewController: UIViewController,
     UITableViewDataSource,
     UITableViewDelegate,
     ProductActionDelegate,
-    UpdateProductDelegate {
-
+UpdateProductDelegate {
+    
     @IBOutlet weak var numberpanel: UITextField!
     @IBOutlet weak var productTable: UITableView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var checkoutButton: UIBarButtonItem!
-
-
+    
+    
     
     var entries = [NSManagedObject]()
     var categories = [NSManagedObject]()
+    
     var account = [AccountItem]()
     var currentSelectedEntry: NSManagedObject?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        :NSDocumentDirectory inDomains:NSUserDomainMask
+//        NSLog("app dir: %@",NSFileManager.defaultManager().URLsForDirectory);
+        
+        let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        println("App Path: \(dirPaths)")
         
         // table view data
         productTable.dataSource = self
@@ -60,7 +68,7 @@ class ViewController: UIViewController,
             let avv = UIAlertView(title: "Fehler", message: "Could not fetch \(error), \(error!.userInfo)", delegate: nil, cancelButtonTitle: "Weiter")
             avv.show()
         }
-
+        
         // Fetch all Categories at once
         let fetchRequestCategory = NSFetchRequest(entityName:"Category")
         var errorCategory: NSError?
@@ -72,7 +80,7 @@ class ViewController: UIViewController,
             let avv = UIAlertView(title: "Fehler", message: "Could not fetch \(error), \(error!.userInfo)", delegate: nil, cancelButtonTitle: "Weiter")
             avv.show()
         }
-
+        
         // Long-Press
         let longpress = UILongPressGestureRecognizer(target: self, action: "longPressGestureRecognized:")
         longpress.minimumPressDuration = 1.8
@@ -84,17 +92,17 @@ class ViewController: UIViewController,
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
-
+            
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Table view 
+    // MARK: - Table view
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return categories.count
@@ -129,12 +137,17 @@ class ViewController: UIViewController,
             }
             
             let item = products[indexPath.row]
+            
+            // get from account
+            let accountItem = account.filter({$0.id == item.objectID})
+            
             cell.id = item.objectID
             cell.managedObject = item
             cell.productname.text = item.valueForKey("name") as? String
             cell.price = (item.valueForKey("price") as? Double)!
+            cell.reset(accountItem.first?.count ?? 0)
+            
             cell.delegate = self
-            dump(item)
             return cell
     }
     
@@ -150,7 +163,7 @@ class ViewController: UIViewController,
                 NSLog("Set managed object")
                 currentSelectedEntry = cell.managedObject!
             }
-             performSegueWithIdentifier("editProductSegue", sender: self)
+            performSegueWithIdentifier("editProductSegue", sender: self)
         }
         
     }
@@ -173,9 +186,9 @@ class ViewController: UIViewController,
                     }
             })
         }
-
+        
     }
-
+    
     // MARK: Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -210,7 +223,7 @@ class ViewController: UIViewController,
                     if account[i].count == 1 {
                         account.removeAtIndex(i)
                     } else {
-                       account[i].count -= 1
+                        account[i].count -= 1
                     }
                     break
                 }
@@ -218,6 +231,8 @@ class ViewController: UIViewController,
             
         }
         updateCalculation()
+        productTable.reloadData()
+        productTable.setNeedsDisplay()
     }
     
     func productsDidUpdated() {
@@ -228,14 +243,57 @@ class ViewController: UIViewController,
         return Double((item.product.valueForKey("price") as? Double)!) * Double(item.count)
     }
     
+    
     func updateCalculation(){
         let prices = account.map(fnCalculatePrices)
         let total = prices.reduce(0) { (total, price) in total + price }
         let nf = NSNumberFormatter()
         nf.numberStyle = .CurrencyStyle
-
+        
         numberpanel.text = nf.stringFromNumber(total)
     }
-
+    
+    // Mark: Checkout
+    
+    @IBAction func checkoutAction(sender: AnyObject) {
+        NSLog("Checkout")
+        // create account
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let ctx = appDelegate.managedObjectContext!
+        var error: NSError?
+        
+        let newAccount = NSEntityDescription.insertNewObjectForEntityForName("Account", inManagedObjectContext: ctx) as! Account
+        
+        newAccount.timestamp = NSDate()
+        self.checkSave(ctx.save(&error), error: &error)
+        
+        println("Saved.")
+        dump(newAccount.objectID)
+        
+        // link every product with a count to the accoutn relation
+        account.map { (elm: AccountItem) -> () in
+            let log = NSEntityDescription.insertNewObjectForEntityForName("Account_Log", inManagedObjectContext: ctx) as! Account_Log
+            log.product = elm.product as! Product
+            log.count = elm.count
+            log.account = newAccount
+            self.checkSave(ctx.save(&error), error: &error)
+            
+        }
+        
+        
+        // clear view
+        account.removeAll(keepCapacity: false)
+        productTable.reloadData()
+        updateCalculation();
+    }
+    
+    func checkSave(save: Bool, inout error: NSError?){
+        if save && error != nil {
+            NSLog("Could not save data.")
+            let avv = UIAlertView(title: "Fehler", message: "Could not save \(error), \(error!.userInfo)", delegate: nil, cancelButtonTitle: "Weiter")
+            avv.show()
+        }
+    }
 }
 
